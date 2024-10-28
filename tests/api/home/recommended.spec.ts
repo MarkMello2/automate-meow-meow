@@ -24,8 +24,8 @@ test(`should get all recommended`, { tag: '@API' }, async ({ request }) => {
     mall_id: { type: "number" },
   }
 
-  const signInSchema: JSONSchemaType<RecRes> = CreateDynamicSchema(properties)
+  const signInSchema: JSONSchemaType<RecRes> = CreateDynamicSchema(properties, [], true)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<RecRes>(signInSchema, responseBody[0]);
+  await apiActions.verifyResponseField<RecRes>(signInSchema, responseBody);
 });

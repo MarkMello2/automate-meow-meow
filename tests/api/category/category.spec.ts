@@ -20,10 +20,10 @@ test(`should get all category`, { tag: '@API' }, async ({ request }) => {
     image: { type: "string" }
   }
 
-  const signInSchema: JSONSchemaType<CateAllRes> = CreateDynamicSchema(properties)
+  const signInSchema: JSONSchemaType<CateAllRes> = CreateDynamicSchema(properties, [], true)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<CateAllRes>(signInSchema, responseBody[0]);
+  await apiActions.verifyResponseField<CateAllRes>(signInSchema, responseBody);
 });
 
 test(`should get category by id`, { tag: '@API' }, async ({ request }) => {
@@ -43,8 +43,8 @@ test(`should get category by id`, { tag: '@API' }, async ({ request }) => {
     mall_id: { type: "number" },
   }
 
-  const signInSchema: JSONSchemaType<CateByIdRes> = CreateDynamicSchema(properties)
+  const signInSchema: JSONSchemaType<CateByIdRes> = CreateDynamicSchema(properties, [], true)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<CateByIdRes>(signInSchema, responseBody[0]);
+  await apiActions.verifyResponseField<CateByIdRes>(signInSchema, responseBody);
 });

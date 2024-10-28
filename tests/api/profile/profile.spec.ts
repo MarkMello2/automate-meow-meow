@@ -33,7 +33,7 @@ test(`should get profile`, { tag: '@API' }, async ({ request }) => {
   const signInSchema: JSONSchemaType<ProfileRes> = CreateDynamicSchema(properties)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<ProfileRes>(signInSchema, responseBody[0]);
+  await apiActions.verifyResponseField<ProfileRes>(signInSchema, responseBody[0]); //not true from api spec
 });
 
 test(`should update profile`, { tag: '@API' }, async ({ request }) => {

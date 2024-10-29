@@ -14,4 +14,5 @@ export const PathUrl = {
   PRODUCT_CATEGORY_BY_ID: `${API_URL}/product/category/1`,
   PRODUCT: `${API_URL}/product`,
   PRODUCT_BY_ID: `${API_URL}/product/40`,
+  PRODUCT_FAV: `${API_URL}/product/favorite`,
 };

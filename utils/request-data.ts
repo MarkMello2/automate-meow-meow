@@ -13,3 +13,11 @@ export const ProfileRequest = {
     sex: "M"
   }
 }
+
+export const FavRequest = {
+  addFav: {
+    product_id: 4,
+    price: 1000.00,
+    quantity: 2
+  }
+}

@@ -30,10 +30,10 @@ test(`should get profile`, { tag: '@API' }, async ({ request }) => {
     user_id: { type: "number" }
   }
 
-  const signInSchema: JSONSchemaType<ProfileRes> = CreateDynamicSchema(properties)
+  const fieldValidate: JSONSchemaType<ProfileRes> = CreateDynamicSchema(properties)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<ProfileRes>(signInSchema, responseBody[0]); //not true from api spec
+  await apiActions.verifyResponseField<ProfileRes>(fieldValidate, responseBody[0]); //not true from api spec
 });
 
 test(`should update profile`, { tag: '@API' }, async ({ request }) => {
@@ -45,8 +45,8 @@ test(`should update profile`, { tag: '@API' }, async ({ request }) => {
   const properties = {
     message: { type: "string" },
   }
-  const signInSchema: JSONSchemaType<ProfileRes> = CreateDynamicSchema(properties)
+  const fieldValidate: JSONSchemaType<{ message: string }> = CreateDynamicSchema(properties)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<ProfileRes>(signInSchema, responseBody);
+  await apiActions.verifyResponseField<{ message: string }>(fieldValidate, responseBody);
 });

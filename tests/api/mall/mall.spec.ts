@@ -3,12 +3,12 @@ import { APIActions } from '../../../libs/api-actions';
 import { PathUrl } from '../../../utils/urls';
 import { JSONSchemaType } from 'ajv';
 import { CreateDynamicSchema } from '../../../utils/create-schema';
-import { RecRes } from '../../../interface/home-interface';
+import { MallByID } from '../../../interface/mall-interface';
 
 const apiActions = new APIActions();
 
-test(`should get all recommended`, { tag: '@API' }, async ({ request }) => {
-  const response = await request.get(PathUrl.PRODUCT_SHOPPING_REC);
+test(`should get shopping mall by id`, { tag: '@API' }, async ({ request }) => {
+  const response = await request.get(PathUrl.PRODUCT_CATEGORY_BY_ID);
 
   await apiActions.verifyStatusCode(response);
 
@@ -21,11 +21,11 @@ test(`should get all recommended`, { tag: '@API' }, async ({ request }) => {
     rating: { type: "number" },
     image: { type: "string" },
     category_id: { type: "number" },
-    mall_id: { type: "number" },
+    mall_id: { type: "number" }
   }
 
-  const fieldValidate: JSONSchemaType<RecRes> = CreateDynamicSchema(properties, [], true)
+  const fieldValidate: JSONSchemaType<MallByID> = CreateDynamicSchema(properties, [], true)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<RecRes>(fieldValidate, responseBody);
+  await apiActions.verifyResponseField<MallByID>(fieldValidate, responseBody);
 });

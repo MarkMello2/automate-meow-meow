@@ -17,8 +17,8 @@ test(`should sign in`, { tag: '@API' }, async ({ request }) => {
     token: { type: "string" },
   };
 
-  const signInSchema: JSONSchemaType<SignInRes> = CreateDynamicSchema(properties, ["token"])
+  const fieldValidate: JSONSchemaType<SignInRes> = CreateDynamicSchema(properties, ["token"])
 
   const responseBody = await response.json();
-  await apiActions.verifyResponseField<SignInRes>(signInSchema, responseBody);
+  await apiActions.verifyResponseField<SignInRes>(fieldValidate, responseBody);
 });

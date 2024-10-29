@@ -19,8 +19,8 @@ test(`should get all shopping mall`, { tag: '@API' }, async ({ request }) => {
     image: { type: "string" }
   }
 
-  const signInSchema: JSONSchemaType<HomeDefaultRes> = CreateDynamicSchema(properties, [], true)
+  const fieldValidate: JSONSchemaType<HomeDefaultRes> = CreateDynamicSchema(properties, [], true)
   const responseBody = await response.json();
 
-  await apiActions.verifyResponseField<HomeDefaultRes>(signInSchema, responseBody);
+  await apiActions.verifyResponseField<HomeDefaultRes>(fieldValidate, responseBody);
 });
